@@ -1,0 +1,26 @@
+{
+  "6216": {
+    "id": 6216,
+    "firstName": "Rachel",
+    "lastName": "Brown",
+    "birthday": "1995-10-30"
+  },
+  "15925": {
+    "id": 15925,
+    "firstName": "William",
+    "lastName": "Green",
+    "birthday": "2000-02-03"
+  },
+  "16452": {
+    "id": 16452,
+    "firstName": "Sam",
+    "lastName": "Fried",
+    "birthday": "1998-01-20"
+  },
+  "36840": {
+    "id": 36840,
+    "firstName": "Wad",
+    "lastName": "Smith",
+    "birthday": "1992-07-17"
+  }
+}

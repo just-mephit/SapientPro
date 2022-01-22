@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS app</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/autoComplete.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/autoComplete.min.css">
+</head>
+<body>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div style="" class="card main-card shadow p-1 col-sm-10 offset-sm-1 col-md-6 offset-md-3">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item w-25" role="presentation">
+                        <button class="nav-link active w-100" disabled id="order-tab" data-bs-toggle="tab" data-bs-target="#order" type="button" role="tab">YOUR ORDER</button>
+                    </li>
+                    <li class="nav-item w-25" role="presentation">
+                        <button class="nav-link w-100" disabled id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">SHIPPING DETAILS</button>
+                    </li>
+                    <li class="nav-item w-25" role="presentation">
+                        <button class="nav-link w-100" disabled id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab">PAYMENT DETAILS</button>
+                    </li>
+                    <li class="nav-item w-25" role="presentation">
+                        <button class="nav-link w-100" disabled id="confirmation-tab" data-bs-toggle="tab" data-bs-target="#confirmation" type="button" role="tab">CONFIRMATION</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <!-- ORDER -->
+                    <div class="tab-pane my-5 fade show active" id="order" role="tabpanel">
+                        <div class="row px-5">
+                            <div class="col-6 mt-4 text-center">
+                                <img class="w-50" src="./assets/img/coffee_machine.jpg">
+                            </div>
+                            <div class="col-6 mb-5">
+                                <h3 class="mb-5">Coffee Machine</h3>
+                                <div class="btn-group w-50 mb-5">
+                                    <button id="order_decrease" class="btn border-0 btn-sm">-</button>
+                                    <input id="order_count" class="w-25 mx-3"/>
+                                    <button id="order_increase" class="btn border-0 btn-sm">+</button>
+                                </div>
+                                <h5 class="text-secondary mb-5">Total: <span id="order_price"></span>$</h5>
+                            </div>
+                            <div class="col-6 pe-5 offset-6">
+                                <button id="order_confirm" class="btn btn-confirm w-100">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ORDER -->
+
+                    <!-- SHIPPING -->
+                    <div class="tab-pane my-5 fade" id="shipping" role="tabpanel">
+                        <div class="row px-5">
+                            <div class="col-6 mb-3 text-center">
+                                Some description...
+                            </div>
+                            <div class="col-6 mb-5">
+                                <div class="mb-1">
+                                    <label for="city" class="form-label">City</label>
+                                    <div class="has-validation">
+                                        <input id="city" class="form-control" type="search" spellcheck="false" autocorrect="off" autocomplete="off" autocapitalize="off"/>
+                                        <div class="invalid-feedback">
+                                            Please write or choose a city.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" id="address" class="form-control">
+                                    <div class="invalid-feedback">
+                                        Please write a address.
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" id="phone" class="form-control">
+                                    <div class="invalid-feedback">
+                                        12 digits. With country code.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button id="shipping_previous" class="btn btn-warning">Previous Step</button>
+                            </div>
+                            <div class="col-6">
+                                <button id="shipping_confirm" disabled class="btn btn-confirm w-100">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SHIPPING -->
+
+                    <!-- PAYMENT -->
+                    <div class="tab-pane my-5 fade" id="payment" role="tabpanel">
+                        <div class="row px-5">
+                            <div class="col-md-5 col-sm-6 mb-5 mt-4">
+                                <div class="d-flex justify-content-center card cc-card">
+                                    <div class="card-header right-align">
+                                        <div class="col-3 offset-9 ">
+                                            <img id="cc-img" src="./assets/img/visa.png">
+                                        </div>
+                                    </div>
+                                    <div id="cc_number" class="card-body">
+                                        XXXX-XXXX-XXXX-XXXX
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div id="cc_holder" class="col-8">HOLDER NAME</div>
+                                            <div id="cc_expire" class="col-4">MM/YY</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 offset-md-1 mb-5">
+                                <div class="mb-1">
+                                    <label for="holder" class="form-label">Name on Card</label>
+                                    <input type="text" id="holder" class="form-control">
+                                    <div class="invalid-feedback">
+                                        Only letters. 2 words.
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="number" class="form-label">Card Number</label>
+                                    <input type="text" id="number" class="form-control">
+                                    <div class="invalid-feedback">
+                                        16 digits.
+                                    </div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-6">
+                                        <label for="expire" class="form-label">Valid Through</label>
+                                        <input type="text" id="expire" class="form-control">
+                                        <div class="invalid-feedback">
+                                            Only 4 digits. Min 22 year.
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <input type="text" id="cvv" class="form-control">
+                                        <div class="invalid-feedback">
+                                            3 to 4 digits.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button id="payment_previous" class="btn btn-warning">Previous Step</button>
+                            </div>
+                            <div class="col-6">
+                                <button id="payment_confirm" disabled class="btn btn-confirm w-100">PAY <span id="payment_confirm_price"></span>$</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAYMENT -->
+
+                    <!-- CONFIRMATION -->
+                    <div class="tab-pane fade" id="confirmation" role="tabpanel">
+                        <div class="confirmation-successful d-flex align-items-center justify-content-center">
+                            <h1 class="text-success user-select-none">Payment Successful</h1>
+                        </div>
+                    </div>
+                    <!-- END CONFIRMATION -->
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
